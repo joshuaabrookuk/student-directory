@@ -25,12 +25,28 @@ def print_footer(names)
     puts "Overall, we have #{names.count} great students"
 end 
 
-# personally I like tp seperate my methods but I'm not sure if it's the Rubyist way
+def input_students
+    puts "Please enter the names of the students"
+    puts "To finish, hit return twice"
+    # beloew creates and empty array, we could do this at the top 
+    # but it works here for now to show the process. 
+    students = []
+    # below gets the first name
+    # we're repeating alot of variable/ argument names here, might get confusing to read
+    name = gets.chomp 
+    # below, while the name is not empty, repeat this code
+    while !name.empty? do
+        # add the student hash to our new array
+        students << {name: name, cohort: :november}
+        puts "Now we have #{students.count} students"
+        # below we get another name from the user
+        name = gets.chomp 
+    end
+    # below, implicitly returns the array of students
+    students
+end 
 
-# this is all much cleaner and eairer to read.
-
-# also nothing will happen until with call out methods
-
-print_header #does it's thing
-print(students) # this method takes the students array as a parameter
-print_footer(students) # this method also takes the array students but counts them instead
+students = input_students
+print_header 
+print(students)
+print_footer(students)
