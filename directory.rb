@@ -1,25 +1,25 @@
 # we put the students into an arry
 students = [
-    "Dr. Hannibal Lecter",
-    "Darth Vader",
-    "Nurse Ratched",
-    "Michael Corleone",
-    "Alex DeLarge",
-    "The Wicked Witch of the West",
-    "Terminator",
-    "Freddy Krueger",
-    "The Joker",
-    "Joffrey Baratheon",
-    "Norman Bates"
-]
+    {name: "Dr. Hannibal Lecter", cohort: :november},
+    {name: "Darth Vader" , cohout: :november},
+    {name: "Nurse Ratched", cohout: :november},
+    {name: "Michael Corleone", cohout: :november},
+    {name: "Alex DeLarge", cohout: :november},
+    {name: "The Wicked Witch of the West", cohout: :november},
+    {name: "Terminator", cohout: :november},
+    {name: "Freddy Krueger", cohout: :november},
+    {name: "The Joker", cohout: :november},
+    {name: "Joffrey Baratheon", cohout: :november},
+    {name: "Norman Bates", cohout: :november}
+    ]
 def print_header
     puts "The students of Villains Academy"
     puts "-------------"
 end 
 
-def print(names)
-    names.each {|name| puts name}
-end 
+def print(students)
+  students.each { |student| puts "#{student[:name]} (#{student[:cohort]} cohort)" }
+end
 
 def print_footer(names)
     puts "Overall, we have #{names.count} great students"
