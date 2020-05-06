@@ -12,10 +12,25 @@ students = [
     "Joffrey Baratheon",
     "Norman Bates"
 ]
-# and then print them
-puts "The students of Villains Academy"
-puts "-------------"
-students.each {|student| puts student}
-# then we print the total
-print "Overall, we have #{students.count} great students \n"
-# we update our interp variable to the arry students and use the count method on the arry.
+def print_header
+    puts "The students of Villains Academy"
+    puts "-------------"
+end 
+
+def print(names)
+    names.each {|name| puts name}
+end 
+
+def print_footer(names)
+    puts "Overall, we have #{names.count} great students"
+end 
+
+# personally I like tp seperate my methods but I'm not sure if it's the Rubyist way
+
+# this is all much cleaner and eairer to read.
+
+# also nothing will happen until with call out methods
+
+print_header #does it's thing
+print(students) # this method takes the students array as a parameter
+print_footer(students) # this method also takes the array students but counts them instead
