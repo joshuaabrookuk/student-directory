@@ -1,20 +1,21 @@
-student_count = 11
-# first we print a list of all students 
+# we put the students into an arry
+students = [
+    "Dr. Hannibal Lecter",
+    "Darth Vader",
+    "Nurse Ratched",
+    "Michael Corleone",
+    "Alex DeLarge",
+    "The Wicked Witch of the West",
+    "Terminator",
+    "Freddy Krueger",
+    "The Joker",
+    "Joffrey Baratheon",
+    "Norman Bates"
+]
+# and then print them
 puts "The students of Villains Academy"
 puts "-------------"
-puts "Dr. Hannibal Lecter"
-puts "Darth Vader"
-puts "Nurse Ratched"
-puts "Michael Corleone"
-puts "Alex DeLarge"
-puts "The Wicked Witch of the West"
-puts "Terminator"
-puts "Freddy Krueger"
-puts "The Joker"
-puts "Joffrey Baratheon"
-puts "Norman Bates"
-# then we print the total number of students 
-print "Overall, we have #{student_count} great students"
-#it’s important that print() doesn’t add new line characters
-
-# print "\nI\nam\ntesting\nback slash + n \nto break a string\nthis code was written on one line\n"
+students.each {|student| puts student}
+# then we print the total
+print "Overall, we have #{students.count} great students \n"
+# we update our interp variable to the arry students and use the count method on the arry.
