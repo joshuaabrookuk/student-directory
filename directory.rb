@@ -31,7 +31,7 @@ def input_students
     students = []
     name = gets.chomp.capitalize 
     while !name.empty? do
-        if name[0] != "S"
+        if name[0] != "S" && name.length < 12
             students << {name: name, cohort: :november}
             puts "Now we have #{students.count} students"
             name = gets.chomp 
