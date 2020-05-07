@@ -1,15 +1,15 @@
 students = [
     {name: "Dr. Hannibal Lecter", cohort: :november},
-    {name: "Darth Vader" , cohout: :november},
-    {name: "Nurse Ratched", cohout: :november},
-    {name: "Michael Corleone", cohout: :november},
-    {name: "Alex DeLarge", cohout: :november},
-    {name: "The Wicked Witch of the West", cohout: :november},
-    {name: "Terminator", cohout: :november},
-    {name: "Freddy Krueger", cohout: :november},
-    {name: "The Joker", cohout: :november},
-    {name: "Joffrey Baratheon", cohout: :november},
-    {name: "Norman Bates", cohout: :november}
+    {name: "Darth Vader" , cohort: :november},
+    {name: "Nurse Ratched", cohort: :november},
+    {name: "Michael Corleone", cohort: :november},
+    {name: "Alex DeLarge", cohort: :november},
+    {name: "The Wicked Witch of the West", cohort: :november},
+    {name: "Terminator", cohort: :november},
+    {name: "Freddy Krueger", cohort: :november},
+    {name: "The Joker", cohort: :november},
+    {name: "Joffrey Baratheon", cohort: :november},
+    {name: "Norman Bates", cohort: :november}
     ]
     
 def print_header
@@ -18,7 +18,12 @@ def print_header
 end 
 
 def print(students)
-  students.each_with_index() { |student, index| puts  " #{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" }
+  current_index = 0
+  
+  while current_index < students.count
+  puts "#{current_index + 1}. #{students[current_index][:name]} #{students[current_index][:cohort]} cohort"
+  current_index += 1
+  end
 end
 
 def print_footer(names)
@@ -34,7 +39,7 @@ def input_students
         if name[0] != "S" && name.length < 12
             students << {name: name, cohort: :november}
             puts "Now we have #{students.count} students"
-            name = gets.chomp 
+            name = gets.chomp.capitalize  
         else
             puts "Please enter the names of the students"
             puts "To finish, hit return twice"
