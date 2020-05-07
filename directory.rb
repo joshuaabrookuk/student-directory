@@ -38,7 +38,7 @@ def input_students
         else
             puts "Please enter the names of the students"
             puts "To finish, hit return twice"
-            name = gets.chomp
+            name = gets.chomp.capitalize 
         end 
     end 
     students
