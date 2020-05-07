@@ -1,4 +1,3 @@
-# we put the students into an arry
 students = [
     {name: "Dr. Hannibal Lecter", cohort: :november},
     {name: "Darth Vader" , cohout: :november},
@@ -18,7 +17,7 @@ def print_header
 end 
 
 def print(students)
-  students.each { |student| puts "#{student[:name]} (#{student[:cohort]} cohort)" }
+  students.each_with_index() { |student, index| puts  " #{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)" }
 end
 
 def print_footer(names)
@@ -28,21 +27,13 @@ end
 def input_students
     puts "Please enter the names of the students"
     puts "To finish, hit return twice"
-    # beloew creates and empty array, we could do this at the top 
-    # but it works here for now to show the process. 
     students = []
-    # below gets the first name
-    # we're repeating alot of variable/ argument names here, might get confusing to read
     name = gets.chomp 
-    # below, while the name is not empty, repeat this code
     while !name.empty? do
-        # add the student hash to our new array
         students << {name: name, cohort: :november}
         puts "Now we have #{students.count} students"
-        # below we get another name from the user
         name = gets.chomp 
     end
-    # below, implicitly returns the array of students
     students
 end 
 
