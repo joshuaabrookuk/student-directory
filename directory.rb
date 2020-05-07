@@ -11,6 +11,7 @@ students = [
     {name: "Joffrey Baratheon", cohout: :november},
     {name: "Norman Bates", cohout: :november}
     ]
+    
 def print_header
     puts "The students of Villains Academy"
     puts "-------------"
@@ -28,14 +29,20 @@ def input_students
     puts "Please enter the names of the students"
     puts "To finish, hit return twice"
     students = []
-    name = gets.chomp 
+    name = gets.chomp.capitalize 
     while !name.empty? do
-        students << {name: name, cohort: :november}
-        puts "Now we have #{students.count} students"
-        name = gets.chomp 
-    end
+        if name[0] != "S"
+            students << {name: name, cohort: :november}
+            puts "Now we have #{students.count} students"
+            name = gets.chomp 
+        else
+            puts "Please enter the names of the students"
+            puts "To finish, hit return twice"
+            name = gets.chomp
+        end 
+    end 
     students
-end 
+end
 
 students = input_students
 print_header 
