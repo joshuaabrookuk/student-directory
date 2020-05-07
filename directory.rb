@@ -1,15 +1,15 @@
 students = [
-    {name: "Dr. Hannibal Lecter", cohort: :november},
-    {name: "Darth Vader" , cohort: :november},
-    {name: "Nurse Ratched", cohort: :november},
-    {name: "Michael Corleone", cohort: :november},
-    {name: "Alex DeLarge", cohort: :november},
-    {name: "The Wicked Witch of the West", cohort: :november},
-    {name: "Terminator", cohort: :november},
-    {name: "Freddy Krueger", cohort: :november},
-    {name: "The Joker", cohort: :november},
-    {name: "Joffrey Baratheon", cohort: :november},
-    {name: "Norman Bates", cohort: :november}
+    {name: "Dr. Hannibal Lecter", cohort: :november, origin: :Lithuania},
+    {name: "Darth Vader" , cohort: :november, origin: :Tatooine},
+    {name: "Nurse Ratched", cohort: :november, origin: :America},
+    {name: "Michael Corleone", cohort: :november, origin: :America},
+    {name: "Alex DeLarge", cohort: :november, origin: :England},
+    {name: "The Wicked Witch of the West", cohort: :november, origin: :The_West},
+    {name: "Terminator", cohort: :november, origin: :Skynet},
+    {name: "Freddy Krueger", cohort: :november, origin: :Dreams},
+    {name: "The Joker", cohort: :november, origin: :Unknown},
+    {name: "Joffrey Baratheon", cohort: :november, origin: :Kings_Landing},
+    {name: "Norman Bates", cohort: :november, origin: :America }
     ]
     
 def print_header
@@ -21,7 +21,7 @@ def print(students)
   current_index = 0
   
   while current_index < students.count
-  puts "#{current_index + 1}. #{students[current_index][:name]} #{students[current_index][:cohort]} cohort"
+  puts "#{current_index + 1}. #{students[current_index][:name]} #{students[current_index][:cohort]}: cohort origin: #{students[current_index][:origin]}"
   current_index += 1
   end
 end
@@ -37,7 +37,7 @@ def input_students
     name = gets.chomp.capitalize 
     while !name.empty? do
         if name[0] != "S" && name.length < 12
-            students << {name: name, cohort: :november}
+            students << {name: name, cohort: :november, origin: :here}
             puts "Now we have #{students.count} students"
             name = gets.chomp.capitalize  
         else
