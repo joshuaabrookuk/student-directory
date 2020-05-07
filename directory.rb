@@ -11,17 +11,20 @@ students = [
     {name: "Joffrey Baratheon", cohort: :november, origin: :Kings_Landing},
     {name: "Norman Bates", cohort: :november, origin: :America }
     ]
-    
+
 def print_header
     puts "The students of Villains Academy"
     puts "-------------"
 end 
 
-def print(students)
+def print_out(students)
   current_index = 0
   
   while current_index < students.count
-  puts "#{current_index + 1}. #{students[current_index][:name]} #{students[current_index][:cohort]}: cohort origin: #{students[current_index][:origin]}"
+  print "#{current_index + 1}."
+  print "#{students[current_index][:name]}".center(35)
+  print "#{students[current_index][:cohort]}: cohort".center(35)
+  print "origin: #{students[current_index][:origin]} \n"
   current_index += 1
   end
 end
@@ -51,5 +54,5 @@ end
 
 students = input_students
 print_header 
-print(students)
+print_out(students)
 print_footer(students)
