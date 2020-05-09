@@ -12,116 +12,58 @@ Addstudents = [
     {name: "Norman Bates", cohort: :november, origin: :America }
     ]
 
-def print_header
-    puts "The students of Villains Academy"
-    puts "-------------"
+def input_students
+  puts "Please enter the names of the students"
+  puts "To finish, just hit return twice"
+  # create an empty array
+  students = []
+  # get the first name
+  name = gets.chomp
+  # while the name is not empty, repeat this code
+  while !name.empty? do
+    # add the student hash to the array
+    students << {name: name, cohort: :november}
+    puts "Now we have #{students.count} students"
+    # get another name from the user
+    name = gets.chomp
+  end
+  # return the array of students
+  students
+end
+
+def students_by_cohort(students)
+  
+  students_by_cohort = {}
+  
+  students.each do |student|
+    cohort = student[:cohort]
+
+  if students_by_cohort[cohort] == nil
+  students_by_cohort[cohort] = []
+  end
+  students_by_cohort[cohort].push(student[:name])
+  end
+  p students_by_cohort
 end 
 
-def print_out(students)
-  current_index = 0
-  
-  while current_index < students.count
-  print "#{current_index + 1}."
-  print "#{students[current_index][:name]}".center(35)
-  print "#{students[current_index][:cohort]}: cohort".center(35)
-  print "origin: #{students[current_index][:origin]} \n"
-  current_index += 1
+def print_header
+  puts "The students of Villains Academy"
+  puts "-------------"
+end
+
+def print(students)
+  students.each do |student|
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
-def print_footer(names)
-    puts "Overall, we have #{names.count} great students"
-end 
-
-def input_students
-  students = []
-
-  puts "Type 'Add' or 'View' "
-  choice = gets.chomp
-  
-  while choice == "Add" 
-    puts "Please enter the names of the students"
-    puts "To finish, hit return twice"
-    
-    name = gets.chomp.capitalize 
-
-    while !name.empty? do
-      if name[0] != "S" && name.length < 12
-        puts "#{name}: Are you happy with this name? Y/N"
-        answer = gets.chomp.upcase
-        if answer == "Y" 
-          break 
-        elsif answer == "N"
-          puts "Please enter the names of the students"
-          puts "To finish, hit return twice"
-          name = gets.chomp.capitalize
-        end
-      else
-        puts "Please enter the names of the students"
-        puts "To finish, hit return twice"
-        name = gets.chomp.capitalize 
-      end 
-    end 
-
-    if name == ""
-      name = :default_name
-    end 
-
-    puts "Please enter the cohort for #{name}"
-    
-    cohort = gets.chomp
-      
-    while !cohort.empty? do 
-      puts "#{cohort}: Are you happy with this cohort? Y/N"
-      answer = gets.chomp.upcase
-      if answer == "Y"
-        break 
-      elsif answer == "N"
-        puts "Please enter the cohort for #{name}"
-        puts "To finish, hit return twice"
-        cohort = gets.chomp
-      end
-    end
-
-    if cohort == ""
-      cohort = :default_cohort
-    end 
-
-    puts "Please enter the origin for #{name}"
-    
-    origin = gets.chomp
-      
-    while !origin.empty? do 
-      puts "#{origin}: Is this origin coreect? Y/N"
-      answer = gets.chomp.upcase
-      if answer == "Y"
-        break
-      elsif answer == "N"
-        puts "Please enter the origin for #{name}"
-        puts "To finish, hit return twice"
-        origin = gets.chomp 
-      end
-    end
-
-    if origin == ""
-      origin = :default_origin
-    end
-
-    students << {name: name.to_sym, cohort: cohort.to_sym, origin: origin.to_sym} 
-    puts "Now we have #{students.count} students"
-
-    puts "'Add' or 'View' "
-    choice = gets.chomp
-  end
-  
-  while choice == "View"
-    break
-  end 
-  
-students
-end   
+def print_footer(students)
+  puts "Overall, we have #{students.count} great students"
+end
 
 students = input_students
-print_header 
-print_out(students)
+#nothing happens until we call the methods
+print_header
+# print(students)
+students_by_cohort(students)
 print_footer(students)
