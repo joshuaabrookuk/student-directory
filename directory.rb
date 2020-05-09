@@ -1,7 +1,6 @@
 @students = []
 
 def print_menu
-  puts "Main Menu".center(30,"-")
   puts "1. Input the students"
   puts "2. Show the students"
   puts "3. Save the list to students.csv"
@@ -22,29 +21,24 @@ def process(selection)
     input_students
   when "2"
     show_students
+  when "9"
+    exit
   when "3"
     save_students
   when "4"
     load_students
-  when "9"
-    "Goodbye".center(30,"-")
-    exit
   else
     puts "I don't know what you meant, try again"
   end
 end
 
 def input_students
-  puts "Add Students Menu".center(30,"-")
   puts "Please enter the names of the students"
-  puts "To finish, just hit return with name empty)"
-  print "Name: "
+  puts "To finish, just hit return twice"
   name = STDIN.gets.chomp
   while !name.empty? do
     @students << {name: name, cohort: :november}
     puts "Now we have #{@students.count} students"
-    puts "(Hit return to finish with name empty)"
-    print "Name: "
     name = STDIN.gets.chomp
   end
 end
@@ -56,8 +50,8 @@ def show_students
 end
 
 def print_header
-  puts "Show Students Menu".center(30,"-")
-  puts "The students of Villains Academy are..."
+  puts "The students of Villains Academy"
+  puts "-------------"
 end
 
 def print_student_list
@@ -67,32 +61,32 @@ def print_student_list
 end
 
 def print_footer
-  if @students.count == 1
-    puts "Overall, we have #{@students.count} one students..."
-  else
-      puts "Overall, we have #{@students.count} great students"
-  end 
+  puts "Overall, we have #{@students.count} great students"
 end
 
 def save_students
-  file = File.open("students.csv", "w")
+  puts "What would you like to call your file name?"
+  filename = gets.chomp
+  file = File.open("#{filename}", "w")
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
     file.puts csv_line
   end
   file.close
-  puts "File Saved 'students.csv'".center(30,"-")
+  puts "#{file_name} file saved"
 end
 
-def load_students(filename = "students.csv")
-  file = File.open(filename, "r")
+def load_students
+  puts "What file would you like to open?"
+  filename = gets.chomp
+  file = File.open("#{filename}", "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     @students << {name: name, cohort: cohort.to_sym}
   end
   file.close
-  puts "File #{filename} Loaded".center(30,"-")
+  puts "#{filename} file loaded"
 end
 
 def try_load_students
