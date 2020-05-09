@@ -1,11 +1,11 @@
 @students = []
 
 def print_menu
-  puts "1. Input the students"
-  puts "2. Show the students"
-  puts "3. Save the list to students.csv"
-  puts "4. Load the list from students.csv"
-  puts "9. Exit"
+  puts "1. Input - Input the students"
+  puts "2. Show - Show the students"
+  puts "3. Save - Save the list to students.csv"
+  puts "4. Load - Load the list from students.csv"
+  puts "5. Exit - Exit the program"
 end
 
 def interactive_menu
@@ -17,16 +17,16 @@ end
 
 def process(selection)
   case selection
-  when "1"
+  when "Input"
     input_students
-  when "2"
+  when "Show"
     show_students
-  when "9"
-    exit
-  when "3"
+    when "Save"
     save_students
-  when "4"
+  when "Load"
     load_students
+  when "Exit"
+    exit
   else
     puts "I don't know what you meant, try again"
   end
@@ -74,9 +74,8 @@ def save_students
   file.close
 end
 
-
-def load_students
-  file = File.open("students.csv", "r")
+def load_students(filename = "students.csv")
+  file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     @students << {name: name, cohort: cohort.to_sym}
@@ -96,7 +95,5 @@ def try_load_students
   end
 end
 
-
-load_students
 try_load_students
 interactive_menu
