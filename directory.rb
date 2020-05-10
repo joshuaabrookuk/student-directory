@@ -65,21 +65,21 @@ def print_footer
   puts "Overall, we have #{@students.count} great students"
 end
 
-
-
-
 def save_students
-  CSV.open("students.csv", "w") do |row|
-     @students.each do |student|
-      row << [student[:name], student[:cohort]]
-    end 
+  File.open("students.csv", "w") do |file|
+    @students.each do |student|
+      student_data = [student[:name], student[:cohort]]
+      csv_line = student_data.join(",")
+      file.puts csv_line
+    end
   end
 end
 
-
 def load_students(filename = "students.csv")
-  CSV.foreach (filename) do |row|
-    @students << {name: row[0], cohort: row[1]}
+  file = File.open(filename, "r")
+  file.readlines.each do |line|
+  name, cohort = line.chomp.split(',')
+    @students << {name: name, cohort: cohort.to_sym}
   end
 end
 
